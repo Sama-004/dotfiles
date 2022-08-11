@@ -54,6 +54,7 @@ bindsym $mod+w kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+r exec "rofi -modi drun,run -show drun"
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -161,13 +162,13 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
+        # back to normal: Enter or Escape or $mod+shift+d
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+        bindsym $mod+shift+d mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+shift+d mode "resize"
 #volume
 bindsym $mod+F7 exec "pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -5%"  
  bindsym $mod+F8 exec "pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo +5%" 
@@ -176,9 +177,8 @@ bindsym $mod+F6 exec "pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-
 bindsym $mod+F2 exec "brightnessctl set 1%-"
 bindsym $mod+F3 exec "brightnessctl set +1%"
 
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-
 exec_always --no-startup-id /home/sama/.config/polybar/launch.sh
 exec --no-startup-id nitrogen --restore
+
