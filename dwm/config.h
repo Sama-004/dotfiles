@@ -7,7 +7,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" , "Symbols Nerd Font:Size=14" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char dmenufont[]       = "JetBrains Mono:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -18,9 +18,24 @@ static const char *colors[][3]      = {
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
+/**
+ * dwmconfig.h 
+ * Hardware multimedia keys
+ */
+/* Somewhere at the beginning of config.h include: */
+
+/* 
+ You obviously need the X11 development packages installed, X11proto in particular, but 
+ here is the location of the upstream copy of the keysyms header if you can't bother 
+ using the contents  of your own hard drive. ;-P
+ 
+ https://cgit.freedesktop.org/xorg/proto/x11proto/tree/XF86keysym.h
+*/
+
+#include <X11/XF86keysym.h>
 
 /* tagging */
-static const char *tags[] = { "1", "", "", "4", "5", "6", "7" };
+static const char *tags[] = { "", "","", "", "", "", "﭂" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -60,6 +75,9 @@ static const Layout layouts[] = {
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *roficmd[] = { "rofi", "-modi", "drun","run", "-show", "drun", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
+static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
+static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
+static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -67,6 +85,9 @@ static const Key keys[] = {
 	{ MODKEY, 			XK_r, 	   spawn, 	   {.v = roficmd  } },
 	{ MODKEY,                       XK_t,      spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_F10,    spawn,          {.v = downvol } },
+	{ MODKEY,                       XK_F9,     spawn,          {.v = mutevol } },
+	{ MODKEY,                       XK_F11,    spawn,          {.v = upvol   } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
