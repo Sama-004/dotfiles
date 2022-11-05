@@ -43,6 +43,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym Print exec flameshot gui
 bindsym $mod+Print exec flameshot gui
+bindsym $mod+c exec CopyQ
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -181,4 +182,4 @@ bindsym $mod+F3 exec "brightnessctl set +1%"
 # finds out, if available)
 exec_always --no-startup-id /home/sama/.config/polybar/launch.sh
 exec --no-startup-id nitrogen --restore
-
+exec --no-startup-id copyq
