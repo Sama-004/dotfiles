@@ -1,0 +1,14 @@
+how to push files to existing git repo 
+
+git init 
+git add .
+git commit -m "message"
+git remote add origin "link to the repo" // use ssh one for convenience 
+
+git push -u -f origin master // for creating a new master 
+
+OR
+
+git push -u -f origin main // for adding the files in the main repo but removes this removes the existing files in the repo and adds the present files only.
+
+git rm --cached -r dirtoremove/  // this removes the directory from git but keeps the file locally, can also use gitignore to remove tracking from git in future 
